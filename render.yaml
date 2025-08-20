@@ -48,10 +48,8 @@ services:
           name: n8n-postgres
           property: password
 
-  - type: pserv
-    name: n8n-postgres
-    env: postgres
+databases:
+  - name: n8n-postgres
     plan: free
-    properties:
-      databaseName: n8n
-      user: n8n_user
+    databaseName: n8n
+    user: n8n_user
