@@ -3,8 +3,8 @@ services:
     name: n8n
     env: node
     plan: free
-    buildCommand: "npm install"
-    startCommand: "npm run start"
+    buildCommand: "npm install --legacy-peer-deps"
+    startCommand: "n8n start"
     envVars:
       - key: N8N_PORT
         value: 10000
@@ -14,8 +14,14 @@ services:
         value: https://your-app.onrender.com
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
+      - key: N8N_SECURE_COOKIE
+        value: "true"
+      - key: N8N_PROTOCOL
+        value: https
       - key: DB_TYPE
         value: postgresdb
+      - key: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+        value: "false"
       - key: DB_POSTGRESDB_HOST
         fromService:
           type: pserv
